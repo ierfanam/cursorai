@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 43 15% 78%;       /* warm tactile paper #cfcbc0 */
+    --foreground: 210 8% 16%;       /* ink charcoal #25282b */
+    --card: 40 19% 91%;             /* porcelain surface #ebe8e2 */
+    --card-foreground: 210 8% 16%;
+    --popover: 40 19% 91%;
+    --popover-foreground: 210 8% 16%;
+    --primary: 136 17% 69%;         /* soft mint #a4beaa */
+    --primary-foreground: 145 25% 15%;
+    --secondary: 40 9% 79%;         /* pressed stone #cecbc4 */
+    --secondary-foreground: 210 8% 16%;
+    --muted: 40 14% 85%;
+    --muted-foreground: 40 3% 32%;   /* graphite #55534f */
+    --accent: 52 97% 64%;           /* signal yellow #fce449 */
+    --accent-foreground: 0 0% 2%;    /* #060606 */
+    --destructive: 3 67% 47%;       /* signal red #ca3027 */
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 6% 62%;
+    --input: 40 9% 79%;
+    --ring: 136 17% 69%;
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    font-family: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.011em;
+  }
+  code, pre, .font-mono {
+    font-family: 'Geist Mono', 'SF Mono', Monaco, Consolas, monospace;
+  }
+}
+
+.monaco-editor {
+  padding-top: 8px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d2d2d;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d3d3d;
+}
+
+.mask-gradient {
+  mask-image: linear-gradient(to bottom, transparent 10%, black 30%, black 70%, transparent 90%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 10%, black 30%, black 70%, transparent 90%);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
+}
+
+.paper-grid {
+  background-color: hsl(var(--background));
+  background-image: linear-gradient(rgba(72, 77, 84, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(72, 77, 84, 0.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.glass-panel {
+  background: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  box-shadow: 12px 14px 28px rgba(68, 64, 54, 0.18), -8px -8px 20px rgba(255, 255, 255, 0.62), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.glass-key {
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.95), hsl(var(--secondary)) 72%);
+  box-shadow: 0 6px 12px rgba(72, 68, 58, 0.18), inset 0 2px 2px rgba(255, 255, 255, 0.95), inset 0 -3px 5px rgba(100, 96, 85, 0.12);
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.glass-key:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(72, 68, 58, 0.2), inset 0 2px 2px rgba(255, 255, 255, 0.95), inset 0 -3px 5px rgba(100, 96, 85, 0.12);
+}
+
+.glass-key:active {
+  transform: translateY(1px) scale(0.985);
+  box-shadow: inset 0 3px 8px rgba(72, 68, 58, 0.2);
+}
+
+.mint-press {
+  background: linear-gradient(155deg, #d8ebdc, #a4beaa 68%, #8da995);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  box-shadow: 0 5px 10px rgba(82, 112, 91, 0.22), inset 0 2px 2px rgba(255, 255, 255, 0.85), inset 0 -2px 3px rgba(53, 91, 64, 0.18);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.mint-press:hover { transform: translateY(-2px); box-shadow: 0 9px 15px rgba(82, 112, 91, 0.25), inset 0 2px 2px rgba(255, 255, 255, 0.9); }
+.mint-press:active { transform: translateY(1px) scale(0.98); }
+
+.yellow-sticker {
+  background: #fce449;
+  color: #060606;
+  box-shadow: 4px 5px 0 rgba(6, 6, 6, 0.13), inset 0 2px 0 rgba(255, 255, 255, 0.8);
+  transform: rotate(-1.5deg);
+}
+
+.studio-display {
+  color: #171717;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.95), 0 3px 0 rgba(131, 127, 118, 0.48), 0 8px 12px rgba(52, 48, 42, 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
