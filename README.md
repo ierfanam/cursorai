@@ -1,0 +1,2 @@
+# cursorai
+Created with Blink
